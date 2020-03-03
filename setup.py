@@ -30,11 +30,12 @@ def parallelCCompile(
 import distutils.ccompiler
 distutils.ccompiler.CCompiler.compile = parallelCCompile
 
+import os
 import torch
 
 build_cuda = torch.cuda.is_available() # TODO allow cross-compiling too
 
-source_root = 'src'
+source_root = os.path.join(os.getcwd(), 'src')
 source_files_cpp = [
     'integral_image_interface.cpp',
     'integral_image.cpp',
